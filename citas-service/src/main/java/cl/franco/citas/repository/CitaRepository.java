@@ -7,7 +7,7 @@ import cl.franco.citas.model.Citas;
 
 
 
-
+@Repository
 public interface CitaRepository extends JpaRepository<Citas,Long>{
 
 }

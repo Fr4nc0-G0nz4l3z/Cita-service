@@ -13,9 +13,9 @@ public class CitaService {
     private final CitaRepository citaRepository;
     private final PacienteClient pacienteClient;
 
-    public Citas crearCita(Citas citas){
+    public Citas crearCita(Citas cita){
         //1. Usar feign para ir al microservicio de paciente y traer sus datos
-        PacienteDTO paciente = pacienteClient.obtenerPacientePorId(citas.getId());
+        PacienteDTO paciente = pacienteClient.obtenerPacientePorId(cita.getId());
 
         if(paciente == null){
             throw new RuntimeException("Paciente no encontrado.");
@@ -24,7 +24,7 @@ public class CitaService {
         System.out.println("Creando cita para: " + paciente.getNombre());
 
         //2. Guardamos la cita en nuestra base de datos
-        return citaRepository.save(citas);
+        return citaRepository.save(cita);
     }
 
 
